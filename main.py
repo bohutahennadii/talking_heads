@@ -2,6 +2,7 @@ import streamlit as st
 
 st.text("TalkingHeads")
 
+text = st.text_input('Enter your question for Taras Shevchenko monument:')
 
 
 #import os
