@@ -13,7 +13,7 @@ from torch.utils.data import Dataset
 class ResponseModel(object):
     result: str
 
-nlp = spacy.load("en")
+nlp = spacy.load("en_core_web_sm")
 sent_nlp = English()
 sent_nlp.add_pipe("sentencizer")
 
