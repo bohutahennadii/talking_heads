@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 import streamlit as st
-=======
-import os
-import spacy
->>>>>>> 974cd974583747a656f987b3819521ac3d27aa61
 
 st.title = "TalkingHeads"
 
