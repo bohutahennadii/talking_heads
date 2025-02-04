@@ -1,6 +1,6 @@
 import streamlit as st
 
-url = st.text_input('Enter url')
+st.text('Enter url')
 
 
 
