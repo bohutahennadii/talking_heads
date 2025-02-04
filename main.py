@@ -6,11 +6,12 @@ from fastapi.templating import Jinja2Templates
 
 from pydantic import BaseModel
 
+os.system("python -m spacy download en_core_web_sm")
+
 from model_ml import (
     get_answer
 )
 
-os.system("python -m spacy download en_core_web_sm")
 
 class TextInput(BaseModel):
     text: str
