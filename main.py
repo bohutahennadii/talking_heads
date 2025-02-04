@@ -1,8 +1,7 @@
 import streamlit as st
+import spacy
 
-from model_ml import (
-    get_answer
-)
+nlp = spacy.load("en_core_web_sm")
 
 st.text("TalkingHeads")
 
