@@ -10,6 +10,7 @@ from model_ml import (
     get_answer
 )
 
+os.system("python -m spacy download en_core_web_sm")
 
 class TextInput(BaseModel):
     text: str
