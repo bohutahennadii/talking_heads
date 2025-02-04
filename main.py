@@ -10,6 +10,10 @@ text = st.text_input('Enter your question for Taras Shevchenko monument:')
 
 answer = st.button('Get answer')
 
+if answer:
+    result = get_answer(text)
+    st.text(result)
+
 #import os
 
 #from fastapi import FastAPI, File, Form, Request, UploadFile, status
