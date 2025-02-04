@@ -8,13 +8,11 @@ import random
 from spacy.lang.en import English
 import torch
 from torch.utils.data import Dataset
-import os
-import en_core_web_sm
 
 class ResponseModel(object):
     result: str
 
-nlp = en_core_web_sm.load()
+nlp = spacy.load("en_core_web_sm")
 sent_nlp = English()
 sent_nlp.add_pipe("sentencizer")
 
