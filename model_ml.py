@@ -251,6 +251,7 @@ def save_dialog_history():
         json.dump(dialog_history[-50:], f, indent=4)
 
 def get_answer(user_input):
+    os.system("python -m spacy download en_core_web_sm")
     knowledge_base = load_knowledge_base(FILE_PATH)
     response = get_response(user_input)
     print(f"Bot: {response}")
