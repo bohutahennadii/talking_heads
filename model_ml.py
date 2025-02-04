@@ -13,8 +13,6 @@ import os
 class ResponseModel(object):
     result: str
 
-os.system("python -m spacy download en_core_web_sm")
-
 nlp = spacy.load("en_core_web_sm")
 sent_nlp = English()
 sent_nlp.add_pipe("sentencizer")
