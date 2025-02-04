@@ -9,11 +9,12 @@ from spacy.lang.en import English
 import torch
 from torch.utils.data import Dataset
 import os
+import en_core_web_sm
 
 class ResponseModel(object):
     result: str
 
-nlp = spacy.load("en_core_web_sm")
+nlp = en_core_web_sm.load()
 sent_nlp = English()
 sent_nlp.add_pipe("sentencizer")
 
@@ -250,8 +251,6 @@ def save_dialog_history():
         json.dump(dialog_history[-50:], f, indent=4)
 
 def get_answer(user_input):
-    import spacy
-    os.system("python -m spacy download en_core_web_sm")
     knowledge_base = load_knowledge_base(FILE_PATH)
     response = get_response(user_input)
     print(f"Bot: {response}")
