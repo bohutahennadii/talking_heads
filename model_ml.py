@@ -9,6 +9,7 @@ from spacy.lang.en import English
 import torch
 from torch.utils.data import Dataset
 import os
+os.system("python -m spacy download en_core_web_sm")
 
 class ResponseModel(object):
     result: str
