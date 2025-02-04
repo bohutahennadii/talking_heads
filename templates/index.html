@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Talking Heads</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      label {
+        text-align: start;
+      }
+
+      .tabs {
+        display: flex;
+        padding: 0 30px;
+      }
+
+      .tab {
+        width: 50%;
+        border-radius: 5px;
+        padding: 15px 20px;
+        border: 1px solid gray;
+        cursor: pointer;
+      }
+
+      .tab:first-child {
+        margin-right: 16px;
+      }
+
+      .tab.active {
+        color: white;
+        background-color: #007bff;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .container {
+        background-color: white;
+        padding: 32px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        text-align: center;
+      }
+
+      .option-wrapper {
+        display: flex;
+        margin: 30px;
+        flex-direction: column;
+      }
+
+      .button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .button:hover {
+        background-color: #45a049;
+      }
+
+      .button-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .button-primary:hover {
+        background-color: #0062cc;
+      }
+
+      .button-success {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .button-success:hover {
+        background-color: #45a049;
+      }
+
+      .button-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .button-danger:hover {
+        background-color: #c83140;
+      }
+
+      .response {
+        margin-top: 10px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TalkingHeads</h1>
+    <div class="container">
+
+        <div class="option-wrapper">
+          <label>
+            Enter your question for Taras Shevchenko monument:
+          </label>
+          <br />
+          <textarea id="textInput" rows="3"></textarea>
+          <br />
+          <button class="button-primary" onclick="submitData()">Get answer</button>
+        </div>
+      <div id="response-box" class="response"></div>
+      </div>
+
+    <script>
+      async function submitData() {
+        try {
+          const textInput = document.getElementById("textInput");
+          const responseBox = document.getElementById("response-box");
+          const correctedBlock = document.getElementById("corrected-block");
+          
+          responseBox.textContent = ""
+          last_verified_text = textInput.value;
+          
+          const response = await fetch("/talking-heads/process-question/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: textInput.value }),
+          });
+          if (response.status == 200) {
+            const result = await response.json();
+            responseBox.textContent = `Bot answer: ${result.answer}`;
+            document.getElementById("correct-block").style.display = "none";
+            document.getElementById("correct-btn-block").style.display = "flex";
+          } else {
+            responseBox.textContent =
+              "Something went wrong!";
+              document.getElementById("correct-block").style.display = "none";
+          }
+
+        } catch (e) {
+          responseBox.textContent =
+            "Something went wrong!";
+        }
+      }
+    </script>
+  </body>
+</html>
