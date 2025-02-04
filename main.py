@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.text = "TalkingHeads"
+url = st.text_input('Enter url')
 
 
 
