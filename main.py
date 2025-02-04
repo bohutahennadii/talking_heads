@@ -1,4 +1,5 @@
 import os
+import spacy
 
 from fastapi import FastAPI, File, Form, Request, UploadFile, status
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
