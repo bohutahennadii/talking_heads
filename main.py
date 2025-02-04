@@ -12,7 +12,7 @@ answer = st.button('Get answer')
 
 if answer:
     result = get_answer(text)
-    st.text(result)
+    st.text(result.result)
 
 #import os
 
